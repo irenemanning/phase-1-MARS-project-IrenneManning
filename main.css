@@ -20,3 +20,9 @@ header {
     
 }
 
+#imageContainer img {
+    margin: 5px;
+    border:7px ridge whitesmoke;
+    
+
+}

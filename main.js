@@ -62,10 +62,29 @@ function MarsTempData(stats) {
 
 //images
 
+
+
+function placeImages(photosArray) {
+    photosArray.forEach(photo => {
+        const imageContainer = document.getElementById('imageContainer')
+        let img = document.createElement('img')
+        img.src = photo.img_src
+        img.setAttribute('height', '200')
+        img.setAttribute('width', '200')
+        imageContainer.append(img)
+        let p = document.createElement('p')
+        p.className = 'imgInfo'
+        p.innerText = `${photo.camera.full_name}`
+        imageContainer.append(p)
+
+    });
+}
+
 function getImages() {
     fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&api_key=Sj7XRHrYDL5LBfhYlnyWUF6oWFhgDv4qWXdlhm9z&feedtype=json&ver=1.0')
     .then(resp => resp.json())
     .then(data => {
-        console.log(data)
+        console.log(data.photos)
+        placeImages(data.photos)
     })
 }
